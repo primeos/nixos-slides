@@ -234,6 +234,52 @@
         </section>
         <section data-markdown data-separator-notes="^Notes:">
           <textarea data-template>
+            # An example NixOS configuration <!-- .element: style="font-size:1.5em" -->
+            <!-- TODO: More awesome stuff? :) -->
+
+            ```nix
+            { config, pkgs, ... }:
+
+            {
+              system.stateVersion = "17.09";
+
+              nix.useSandbox = true;
+
+              boot.kernelPackages = pkgs.linuxPackages_latest;
+
+              i18n = {
+                consoleFont = "Lat2-Terminus16";
+                consoleKeyMap = "de";
+                defaultLocale = "en_US.UTF-8";
+              };
+
+              time.timeZone = "Europe/Berlin";
+
+              environment = {
+                systemPackages = with pkgs; [
+                  # Core
+                  vim_configurable gitAndTools.gitFull wget
+                  # Monitoring
+                  htop python3Packages.glances
+                  # Tools
+                  time file tree lsof
+                  pciutils hdparm zip unzip
+                  # Network
+                  inetutils bind.dnsutils
+                  tcpdump
+                ];
+                variables = {
+                  EDITOR = "vim";
+                };
+              };
+
+              programs.bash.enableCompletion = true;
+            }
+            ```
+          </textarea>
+        </section>
+        <section data-markdown data-separator-notes="^Notes:">
+          <textarea data-template>
             # NixOps
           </textarea>
         </section>
