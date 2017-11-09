@@ -63,6 +63,82 @@
             - nixcrates, cargo2nix, elm2nix, ...
           </textarea>
         </section>
+        <section data-markdown data-separator-notes="^Notes:">
+          <textarea data-template>
+            # Problems of classical package managers
+
+            - Different versions of a binary
+            - Package conflicts
+            - State -> nondeterministic builds -> not reproducible
+            - No rollbacks
+            - No configuration management (NixOS)
+            - Updates/configuration changes destructively update the system
+              state (overwriting files in sequence -> temporary inconsistency)
+            Notes:
+            - Apps might have an undefined behaviour or crash when launched
+              during an upgrade + possibility of permanent damage when
+              interrupted (e.g. even unbootable!).
+            - Incomplete dependency specifications (no isolated build
+              environment)
+            - Nominal dependency specifications (only name and optionally
+              version)
+            - Configuration files not controlled by the package manager.
+            - Upgrading modified configuration files is problematic.
+            - Binaries = global variables (e.g. /bin/bash)
+          </textarea>
+        </section>
+        <section data-markdown data-separator-notes="^Notes:">
+          <textarea data-template>
+            # Nix(OS)
+
+            - Atomic upgrades/rollbacks (software & configuration)
+            - Multiple versions of a package (side-by-side, e.g. testing a new
+              Apache version)
+            - Deterministic & Reproducible builds
+            - Reliable upgrades (and rollbacks - configuration bound to correct
+              software version + service reloads/restarts)
+            - Reliable channel upgrades/rollbacks (e.g. 17.03 -> 17.09)
+            - Unprivileged users can securely install software
+            Notes:
+            - Next slide: Declarative configuration management
+          </textarea>
+        </section>
+        <section data-markdown data-separator-notes="^Notes:">
+          <textarea data-template>
+            # Being functional
+
+            - Classically: Imperative configuration
+              - Stateful changes (-> dependency hell, inconsistent states, etc.)
+            - NixOS: Declarative configuration
+              - Packages/Configuration = immutable values
+              - (Complete) rebuilds instead of destructive updates
+              - Referential transparency (~an expression always evaluates to the
+                same result)
+            Notes:
+            - Referential transparency: An expression always evaluates to the
+              same result in any contex (no side effects like (uncontrolled)
+              imperative updates).
+          </textarea>
+        </section>
+        <section data-markdown data-separator-notes="^Notes:">
+          <textarea data-template>
+            # Problems
+
+            - Not all packages are reproducible (2016: 12.8%)
+            - Running pre-compiled binaries
+            - No GUI for package/configuration management
+            - No LTS releases or super stable (i.e. old :P) branches
+            - Not all use-cases or configuration options supported
+              - Some tricks available + PRs welcome ;)
+            - Lacking manpower/workforce (e.g. security, documentation)
+            - Scripts with hard-coded paths don't work
+            Notes:
+            - 13 Dec 2016: "Currently, out of 36550 build steps in a full NixOS
+            evaluation, only 4699 (12.8%) were detected as non-deterministic.
+            (Note that Hydra can only detect the presence of non-determinism,
+            not its absence)." - Eelco
+          </textarea>
+        </section>
       </div>
     </div>
 
