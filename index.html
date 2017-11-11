@@ -225,6 +225,21 @@
         <section data-markdown data-separator-notes="^Notes:">
           <textarea data-template>
             # NixOS
+
+            - Implements a declarative and purely functional system
+              configuration model
+            - Based on Nix (package + configuration management)
+            - NixOS modules (separation of concerns)
+            - Form the full "system configuration"
+              ```nix
+              { config, pkgs, ... }: {
+                options = { nested attribute set of option declarations using mkOption };
+                config = { nested attribute set of option definitions };
+              }
+              ```
+            Notes:
+            - modules = functions
+            - { config } -> config = full system configuration
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
