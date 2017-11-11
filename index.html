@@ -147,6 +147,28 @@
         <section data-markdown data-separator-notes="^Notes:">
           <textarea data-template>
             # Nix expressions / Nix expression language
+
+            - A DSL (not a GPL!)
+              - Describes graphs of build actions ("derivations")
+              - Packages, compositions of packages, configurations, ...
+            - Dynamically typed ("Nix won't be complete until it has static
+              typing." @edolstra) - https://typing-nix.regnat.ovh/
+            - Lazy (a very important feature!)
+            - Purely functional (no side-effects, immutable store)
+            - Turing complete (e.g. Dhall is not ->
+              [dhall-nix](https://github.com/dhall-lang/dhall-nix))
+            Notes:
+            - DSL vs GPL: MD5 collisions by @Azlig (Chromium updater) :D
+            - "Config files shouldn't be Turing complete" (-> always terminate)
+            - Dhall is explicitly typed, evaluated, and configuration files can
+              be reduced to a normal form
+            <!-- TODO:
+              - Bad evaluation errors? :D
+                - Missing typing
+                - Error in anonymous function at unknown file?
+              - Evaluated vs interpreted?
+              - Bugs? :D (e.g. a-b)
+            -->
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
