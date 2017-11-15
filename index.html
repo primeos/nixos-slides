@@ -220,7 +220,19 @@
         </section>
         <section data-markdown data-separator-notes="^Notes:">
           <textarea data-template>
-            # Nixpkgs
+            # Nixpkgs (the Nix packages collection)
+            <!-- .element: style="font-size:1.6em" -->
+
+            - Main GitHub repository (permissive MIT/X11 license)
+            - Contains definitions of packages (Nix) and modules (NixOS)
+            - Also contains tests, library functions, etc.
+            - Different branches (rolling: master, stable: release-YY.MM)
+            - Build and tested by Hydra (+ uploaded to binary cache)
+            - Distributed through (nixpkgs-)channels (nixpkgs-unstable,
+              nixos-unstable(-small), nixos-YY.MM(-small))
+            Notes:
+            - Stable: MM = 03 or 09 (end of month, branch off one month before)
+            - Talk about codenames, release schedule, freezing, etc.?
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
