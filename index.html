@@ -160,6 +160,22 @@
         <section data-markdown data-separator-notes="^Notes:">
           <textarea data-template>
             # Nix
+
+            - A purely functional package manager (transparent source/binary
+              deployment)
+            - Secure multi-user support
+            - Stores packages in the Nix store (`/nix/store` by default)
+            - Each package has it's own unique identifier/directory
+              - E.g. `qn96dbgqdryaw38zw6v08da34q5v4qz3-git-repo-1.12.37`
+                <!-- .element: style="font-size:0.7em" -->
+                (cryptographic hash, name, version)
+              - Enables multiple versions & binary substitutes
+              - "Forces" complete dependencies
+            Notes:
+            - Hash captures all dependencies (160-bit truncations of SHA-256
+              encoded in base-32 (i.e. 32 characters))
+            - Version: Digit after a dash
+            - Garbage collection (nix-collect-garbage)
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
