@@ -16,6 +16,12 @@
 		root.RevealMarkdown.initialize();
 	}
 }( this, function( marked ) {
+	var notesRenderer = new marked.Renderer(); // For notes
+	var customRenderer = new marked.Renderer();
+	customRenderer.listitem = function(text) {
+		return '<li class="fragment">' + text + '</li>\n';
+	};
+	marked.setOptions({ renderer: customRenderer });
 
 	var DEFAULT_SLIDE_SEPARATOR = '^\r?\n---\r?\n$',
 		DEFAULT_NOTES_SEPARATOR = 'note:',
@@ -109,7 +115,7 @@
 		var notesMatch = content.split( new RegExp( options.notesSeparator, 'mgi' ) );
 
 		if( notesMatch.length === 2 ) {
-			content = notesMatch[0] + '<aside class="notes">' + marked(notesMatch[1].trim()) + '</aside>';
+			content = notesMatch[0] + '<aside class="notes">' + marked(notesMatch[1].trim(), { renderer: notesRenderer }) + '</aside>';
 		}
 
 		// prevent script end tags in the content from interfering
