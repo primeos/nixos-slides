@@ -25,7 +25,6 @@
     <div class="reveal">
       <div class="slides">
         <!-- TODO list:
-          - Dependency graphs (demo?)
           - Release process?
           - NixOS security
           - Vulnix
@@ -323,6 +322,24 @@
               };
             }
             ```
+          </textarea>
+        </section>
+        <section data-markdown data-separator-notes="^Notes:">
+          <textarea data-template>
+            # Dependency graphs
+
+            pgpdump's runtime dependencies:
+
+            ```bash
+            nix-store -q --graph $(nix-store --realise $(nix-instantiate -A pgpdump)) | dot -Tpdf | zathura -
+            ```
+
+            ![Pgpdump runtime dependencies](img/pgpdump-rdeps.svg)
+
+            Notes:
+            - Build time dependencies available as well (but graph way too
+              large)
+            - E.g. CVE patches as build inputs
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
