@@ -69,10 +69,10 @@
             - Nixpkgs (Nix packages collection)
             - NixOS (operating system)
             - NixOps (DevOps / cloud deployment tool)
-            <!-- TODO: Nix expressions / Nix expression language
-              Nix core (store derivations)?
-              nixpkgs: /lib
-            -->
+            Notes:
+            - Entries correspond to GH repos
+            - Only read out slide (details will follow later, e.g. on the next
+              slide)
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
@@ -82,7 +82,19 @@
 
             ![Nix* ISO/OSI model](img/nix-iso-osi.svg)
             <!-- .element height="35%" width="35%" style="background:white;border-style:none" -->
-
+            Notes:
+            - Nix ~ dpkg, pacman, portage
+            - Nixpkgs ~ apt/deb sources, PKGBUILD
+            - NixOS ~ Arch, Ubuntu, Gentoo
+            - NixOps ~ Puppet, Ansible, Chef
+              - Configuration Management
+              - Infrastructure as Code
+              - DevOps
+            <!-- TODO:
+              Nix expressions / Nix expression language
+              Nix core (store derivations)?
+              nixpkgs: /lib
+            -->
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
@@ -94,6 +106,7 @@
             - PatchELF (change dynamic linker and RPATH)
             - {cabal,go,node,pip,python,pypi,composer,hex,bower,vim,...}2nix
             Notes:
+            - Disnix: Deploying (micro)services
             - nixcrates, cargo2nix, elm2nix, ...
           </textarea>
         </section>
@@ -249,13 +262,12 @@
             - "Config files shouldn't be Turing complete" (-> always terminate)
             - Dhall is explicitly typed, evaluated, and configuration files can
               be reduced to a normal form
-            <!-- TODO:
-              - Bad evaluation errors? :D
-                - Missing typing
-                - Error in anonymous function at unknown file?
-              - Evaluated vs interpreted?
-              - Bugs? :D (e.g. a-b)
-            -->
+            - TODO:
+                - Bad evaluation errors? :D
+                  - Missing typing
+                  - Error in anonymous function at unknown file?
+                - Evaluated vs interpreted?
+                - Bugs? :D (e.g. a-b)
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
