@@ -75,12 +75,17 @@
             - Computer science student at the University of Tübingen
             - I love free software, etc.
             - First `nixpkgs` commit: 2016-10-05
+            - I maintain ~41 packages and ~3 modules (2018-06-08)
             - I also love privacy (i.e. no more details :P)
             - Email: [dev.primeos@gmail.com](mailto:dev.primeos@gmail.com)
               (#privacy)
             Notes:
             - First commit: 8268f0a759597bfdf07f2cc48b265215040b5c5e (pgpdump:
               init at v0.31)
+            - 2018-06-08
+              - Maintaining ~41 packages
+              - Wrote ~4 modules (2 active, 1 WIP, 1 disabled)
+              - Maintaining 3 modules
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
@@ -160,10 +165,13 @@
             - 2013: Switch from Upstart to systemd + NixOps 1.0 release
             - 2015: NixOS Foundation + First NixCon (Berlin)
             - 2017: Second NixCon (Munich)
+            - 2018: Third NixCon (London)
             Notes:
             - https://nixos.org/news.html
             - 2007: NixOS is not an
               [April Fools’ Joke](https://www.osnews.com/comments/17601)
+              - www.osnews.com post on 1st April 2017 (introduces NixOS, focus
+                on purely functional)
             - Nix logo:
               - Nix is Latin for snow (-> snowflake)
               - Was initially created for the Haskell logo competition
@@ -575,7 +583,7 @@
             { config, pkgs, ... }:
 
             {
-              system.stateVersion = "17.09";
+              system.nixos.stateVersion = "18.03";
 
               nix.useSandbox = true;
 
@@ -667,10 +675,10 @@
             - [A tour of Nix](https://nixcloud.io/tour/)
               - By Joachim Schiele & Paul Seitz from Tübingen ;)
             - [Unofficial user's wiki](https://nixos.wiki/wiki/Main_Page)
-            - Manuals (
-                [Nix](https://nixos.org/nix/manual/),
+            - Manuals
+                ([Nix](https://nixos.org/nix/manual/),
                 [Nixpkgs](https://nixos.org/nixpkgs/manual/),
-                [NixOS](https://nixos.org/nixos/manual/)
+                [NixOS](https://nixos.org/nixos/manual/), and
                 [NixOps](https://nixos.org/nixops/manual/))
           </textarea>
         </section>
@@ -705,8 +713,11 @@
             <!-- .element height="30%" width="30%" style="background:#222;border-style:none;box-shadow:none" -->
 
             - Questions?
+            - Feedback
             - Discussion
             Notes:
+            - Feedback
+              - Possible improvements?
             - Do or do not, there is no try.
             - Q&A
             - Hacking
