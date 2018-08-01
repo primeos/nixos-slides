@@ -1,0 +1,29 @@
+From d2f13a747c92e2d78dc420ef99d5099c1377ee83 Mon Sep 17 00:00:00 2001
+From: Luke Adams <luke.adams@belljar.io>
+Date: Fri, 19 Jan 2018 23:49:49 -0600
+Subject: [PATCH] phantomjs2: set QT_QPA_PLATFORM to allow use in daemons
+
+resolves issues with Grafana email attachments
+
+Suggested in https://github.com/ariya/phantomjs/issues/15217#issuecomment-354713760
+
+(cherry picked from commit 457bf6da585eb7cb0291a33c00dc4736c8e49e8d)
+---
+ pkgs/development/tools/phantomjs2/default.nix | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pkgs/development/tools/phantomjs2/default.nix b/pkgs/development/tools/phantomjs2/default.nix
+index ee5de04a782..71f63344e69 100644
+--- a/pkgs/development/tools/phantomjs2/default.nix
++++ b/pkgs/development/tools/phantomjs2/default.nix
+@@ -101,6 +101,7 @@ in stdenv.mkDerivation rec {
+     $out/bin/phantomjs
+   '' + ''
+     wrapProgram $out/bin/phantomjs \
++    --set QT_QPA_PLATFORM offscreen \
+     --prefix PATH : ${stdenv.lib.makeBinPath [ qtbase ]}
+   '';
+ 
+-- 
+2.16.3
+

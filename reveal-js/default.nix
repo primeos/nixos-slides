@@ -8,7 +8,7 @@ let
   globalBuildInputs = pkgs.lib.attrValues (import ./supplement.nix {
     inherit nodeEnv;
     inherit (pkgs) fetchurl fetchgit;
-  }) ++ [ pkgs.phantomjs2 ]; # TODO: This requires a patched phantomjs2 derivation!
+  }) ++ [ pkgs.phantomjs2 ];
   nodeEnv = import ./node-env.nix {
     inherit (pkgs) stdenv python2 utillinux runCommand writeTextFile;
     inherit nodejs;
