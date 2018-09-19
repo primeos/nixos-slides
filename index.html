@@ -756,8 +756,12 @@
         slideNumber: true,
         history: true,
         width: 1080,
-        height: 720
+        height: 720,
+        // Disable all fragments for normal viewing. They can be enabled for
+        // the presentation with ?fragments=true (URL parameter):
+        fragments: false
       });
+      Reveal.configure({ pdfMaxPagesPerSlide: 1 });
     </script>
   </body>
 </html>
