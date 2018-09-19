@@ -56,15 +56,11 @@
             - Please ask lots of questions :)
             - The slides contain some redundancy
             - There are a few optional slides at the end
-            - Please give me feedback
-              - Louder
-              - Faster/slower
-              - More/less details
-              - Etc.
+            - Please give me feedback (louder, faster/slower, more/less details, etc.)
             Notes:
             - Try to ask longer questions after the presentation
-            - All questions are awesome! (even if I forget to mention this)
             - I might postpone some questions until the corresponding slide
+            - All questions are awesome! (even if I forget to mention this)
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
@@ -75,10 +71,8 @@
             - Computer science student at the University of Tübingen
             - I love free software, etc.
             - First `nixpkgs` commit: 2016-10-05
-            - I maintain ~41 packages and ~3 modules (2018-06-08)
-            - I also love privacy (i.e. no more details :P)
+            - I maintain ~44 packages and ~4 modules (2018-09-18)
             - Email: [dev.primeos@gmail.com](mailto:dev.primeos@gmail.com)
-              (#privacy)
             Notes:
             - First commit: 8268f0a759597bfdf07f2cc48b265215040b5c5e (pgpdump:
               init at v0.31)
@@ -105,7 +99,7 @@
         <section data-markdown data-separator-notes="^Notes:">
           <textarea data-template>
             # Nix* ISO/OSI model
-            <!-- Yes, we know this hast nothing to do with ISO/OSI... :D -->
+            <!-- Yes, I know this has actually nothing to do with ISO/OSI... :D -->
 
             ![Nix* ISO/OSI model](img/nix-iso-osi.svg)
             <!-- .element height="35%" width="35%" style="background:white;border-style:none" -->
@@ -117,6 +111,7 @@
               - Configuration Management
               - Infrastructure as Code
               - DevOps
+            - Derivations and store paths
             <!-- TODO:
               Nix expressions / Nix expression language
               Nix core (store derivations)?
@@ -131,7 +126,8 @@
             - Hydra (Nix based continuous build system)
             - Disnix (distributed services deployment)
             - PatchELF (change dynamic linker and RPATH)
-            - {cabal,go,node,pip,python,pypi,composer,hex,bower,vim,...}2nix
+            - {cabal,go,node,pip,python,pypi,composer,hex,
+              bower,vim,...}2nix
             Notes:
             - Disnix: Deploying (micro)services
             - nixcrates, cargo2nix, elm2nix, ...
@@ -285,6 +281,8 @@
               encoded in base-32 (i.e. 32 characters))
             - Version: Digit after a dash
             - Garbage collection (nix-collect-garbage)
+            - Similar to Content Addressed Storage (CAS)
+              - Nothing is ever overwritten!
           </textarea>
         </section>
         <section data-markdown data-separator-notes="^Notes:">
@@ -294,8 +292,8 @@
             - A DSL (not a GPL!)
               - Describes graphs of build actions ("derivations")
               - Packages, compositions of packages, configurations, ...
-            - Dynamically typed ("Nix won't be complete until it has static
-              typing." @edolstra) - https://typing-nix.regnat.ovh/
+            - Dynamically typed ~~("Nix won't be complete until it has static
+              typing." @edolstra)~~ - https://typing-nix.regnat.ovh/
             - Lazy (a very important feature!)
             - Purely functional (no side-effects, immutable store)
             - Turing complete (e.g. Dhall is not ->
