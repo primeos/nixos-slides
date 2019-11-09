@@ -33,16 +33,14 @@ in {
 
       # TODO: This is a bit hacky...
       cd reveal-js
-      ln -s ../img img
+      ln -sfn ../img img
       cp ../index.html index.html
       sed --in-place \
         -e 's,reveal-js/,,g' \
         index.html
 
       # Because Grunt must be installed locally...
-      if [[ ! -e node_modules ]]; then
-        ln -s "$nodeDependencies/lib/node_modules" node_modules
-      fi
+      ln -sfn "$nodeDependencies/lib/node_modules" node_modules
 
       # Automatically start the server
       exec npm start
