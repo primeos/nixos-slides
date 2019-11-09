@@ -12,6 +12,7 @@
 			}
 
 			#current-slide,
+			#current-slide-all,
 			#upcoming-slide,
 			#speaker-controls {
 				padding: 6px;
@@ -20,6 +21,7 @@
 			}
 
 			#current-slide iframe,
+			#current-slide-all iframe,
 			#upcoming-slide iframe {
 				width: 100%;
 				height: 100%;
@@ -27,6 +29,7 @@
 			}
 
 			#current-slide .label,
+			#current-slide-all .label,
 			#upcoming-slide .label {
 				position: absolute;
 				top: 10px;
@@ -63,6 +66,16 @@
 				height: 40%;
 				right: 0;
 				top: 0;
+			}
+
+			#current-slide-all {
+				position: absolute;
+				width: 40%;
+				height: 40%;
+				top: 50%;
+				left: 0;
+				padding-right: 0;
+				visibility: hidden;
 			}
 
 			/* Speaker controls */
@@ -197,6 +210,39 @@
 				clear: both;
 			}
 
+			/* Speaker layout: primeos */
+			body[data-speaker-layout="primeos"] #current-slide,
+			body[data-speaker-layout="primeos"] #current-slide-all,
+			body[data-speaker-layout="primeos"] #upcoming-slide {
+				width: 50%;
+				height: 45%;
+				padding: 6px;
+			}
+
+			body[data-speaker-layout="primeos"] #current-slide {
+				top: 0;
+				left: 0;
+			}
+
+			body[data-speaker-layout="primeos"] #upcoming-slide {
+				top: 0;
+				left: 50%;
+			}
+
+			body[data-speaker-layout="primeos"] #current-slide-all {
+				top: 45%;
+				left: 0;
+				visibility: visible;
+                        }
+
+			body[data-speaker-layout="primeos"] #speaker-controls {
+				top: 45%;
+				left: 50%;
+				width: 50%;
+				height: 50%;
+				font-size: 1.25em;
+			}
+
 			/* Speaker layout: Wide */
 			body[data-speaker-layout="wide"] #current-slide,
 			body[data-speaker-layout="wide"] #upcoming-slide {
@@ -289,6 +335,7 @@
 	<body>
 
 		<div id="current-slide"></div>
+		<div id="current-slide-all"><span class="overlay-element label">Current</span></div>
 		<div id="upcoming-slide"><span class="overlay-element label">Upcoming</span></div>
 		<div id="speaker-controls">
 			<div class="speaker-controls-time">
@@ -332,6 +379,7 @@
 					connected = false;
 
 				var SPEAKER_LAYOUTS = {
+					'primeos': 'primeos',
 					'default': 'Default',
 					'wide': 'Wide',
 					'tall': 'Tall',
@@ -415,7 +463,9 @@
 
 					// Update the note slides
 					currentSlide.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ data.state ] }), '*' );
+					currentSlideAll.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ data.state ] }), '*' );
 					upcomingSlide.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ data.state ] }), '*' );
+                                        // Uncomment to show the current slide as next slide (without fragments)
 					upcomingSlide.contentWindow.postMessage( JSON.stringify({ method: 'next' }), '*' );
 
 				}
@@ -453,13 +503,19 @@
 					var urlSeparator = /\?/.test(data.url) ? '&' : '?';
 					var hash = '#/' + data.state.indexh + '/' + data.state.indexv;
 					var currentURL = data.url + urlSeparator + params + '&postMessageEvents=true' + hash;
-					var upcomingURL = data.url + urlSeparator + params + '&controls=false' + hash;
+					var upcomingURL = data.url + urlSeparator + params + '&controls=false&fragments=false' + hash;
 
 					currentSlide = document.createElement( 'iframe' );
 					currentSlide.setAttribute( 'width', 1280 );
 					currentSlide.setAttribute( 'height', 1024 );
 					currentSlide.setAttribute( 'src', currentURL );
 					document.querySelector( '#current-slide' ).appendChild( currentSlide );
+
+					currentSlideAll = document.createElement( 'iframe' );
+					currentSlideAll.setAttribute( 'width', 1280 );
+					currentSlideAll.setAttribute( 'height', 1024 );
+					currentSlideAll.setAttribute( 'src', upcomingURL );
+					document.querySelector( '#current-slide-all' ).appendChild( currentSlideAll );
 
 					upcomingSlide = document.createElement( 'iframe' );
 					upcomingSlide.setAttribute( 'width', 640 );
